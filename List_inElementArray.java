@@ -1,0 +1,135 @@
+/**
+  Implement a list of diverse types, including
+  integers, double-precision floating point numbers,
+  and Strings.
+ */
+
+public class List_inElementArray {
+
+
+    private int filledElements; // the number of elements in this list
+
+    /* type identifier for each element
+       That is, typeOfElements[i] == 0 means element i is an integer;
+                                     1 means element i is a double;
+                                     2 means element i is a String.
+        Optional extra education in programming (not comp sci):
+            replace these "magic numbers" with an "enumerated type".
+     */
+    private Element[] list;
+
+    private static final int INITIAL_CAPACITY = 10;
+
+    /**
+      Construct an empty list with a small initial capacity.
+     */
+    public List_inArraySlots() {
+      list = new Element[INITIAL_CAPACITY];
+    }
+
+
+    /**
+      @return the number of elements in this list
+     */
+    public int size() {
+      return filledElements;
+    }
+
+
+     /**
+       @return a string representation of this list,
+       in [a,b,c,] format
+      */
+    public String toString() {
+      String stringRep = "[";
+      for (int index = 0; index < filledElements; index++){
+        stringRep += list[index];
+	}
+      stringRep += "]";
+      return stringRep;
+    }
+
+
+    /**
+      Appends @value to the end of this list.
+
+      @return true, in keeping with conventions yet to be discussed
+     */
+     public boolean add( int type   // same meaning as in typeOfElements
+                       , int    intValue
+                       , double doubleValue
+                       , String stringValue
+                       ) {
+           // expand when at max
+           if (filledElements == typeOfElements.length) expand();
+
+           // check if int
+           if (type == INTEGERS){
+             intElements[filledElements] = intValue;
+             typeOfElements[filledElements] = INTEGERS;
+             filledElements++;
+           }
+           // check if double
+           else if (type == DOUBLES){
+             doubleElements[filledElements] = doubleValue;
+             typeOfElements[filledElements] = DOUBLES;
+             filledElements++;
+           }
+           // otherwise is a string
+           else {
+             stringElements[filledElements] = stringValue;
+             typeOfElements[filledElements] = STRINGS;
+             filledElements++;
+           }
+
+           return true;
+     }
+
+
+    /**
+      Double the capacity of the List_inArraySlots,
+      preserving existing data.
+     */
+     private void expand() {
+        System.out.println( "expand... (for debugging)");
+           /* S.O.P. rules for debugging:
+              Working methods should be silent. But during
+              development, the programmer must verify that
+              this method is called when that is appropriate.
+              So test using the println(), then comment it out.
+              */
+
+       //System.out.println( "old length:" + typeOfElements.length);
+
+          // expand intElements
+          int[] expandedInt = new int[intElements.length * 2];
+          for(int index = 0; index < filledElements; index++)
+            expandedInt[index] = intElements[index];
+          intElements = expandedInt;
+
+
+          // expand doubleElements
+          double[] expandedDouble = new double[doubleElements.length * 2];
+          for(int index = 0; index < filledElements; index++)
+            expandedDouble[index] = doubleElements[index];
+          doubleElements = expandedDouble;
+
+
+          // expand stringElements
+          String[] expandedString = new String[stringElements.length * 2];
+          for(int index = 0; index < filledElements; index++)
+            expandedString[index] = stringElements[index];
+          stringElements = expandedString;
+
+
+          // expand typeOfElements
+          int[] expandedType = new int[typeOfElements.length * 2];
+          for(int index = 0; index < filledElements; index++)
+            expandedType[index] = typeOfElements[index];
+          typeOfElements = expandedType;
+
+
+       // System.out.println( "new length:" + typeOfElements.length);
+
+     }
+}
