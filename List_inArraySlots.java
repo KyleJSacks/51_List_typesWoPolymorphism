@@ -6,7 +6,9 @@
 
 public class List_inArraySlots {
 
-
+    // ================================================================
+    // FIELDS
+    
     private int filledElements; // the number of elements in this list
 
     /* type identifier for each element
@@ -19,15 +21,20 @@ public class List_inArraySlots {
     private Element[] list;
 
     private static final int INITIAL_CAPACITY = 10;
-
+    
+    // ================================================================
+    // CONSTRUCTORS
+    
     /**
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
       list = new Element[INITIAL_CAPACITY];
     }
-
-
+    
+    // ================================================================
+    // METHODS
+    
     /**
       @return the number of elements in this list
      */
@@ -42,9 +49,10 @@ public class List_inArraySlots {
       */
     public String toString() {
       String stringRep = "[";
-      for (int index = 0; index < filledElements; index++){
+      
+      for (int index = 0; index < filledElements; index++)
         stringRep += list[index] + ",";
-	}
+
       stringRep += "]";
       return stringRep;
     }
@@ -60,17 +68,21 @@ public class List_inArraySlots {
                        , double doubleValue
                        , String stringValue
                        ) {
-           // expand when at max
-           if (filledElements == list.length) expand();
-		   list[filledElements] = new Element(type, intValue, doubleValue, stringValue);
-		   filledElements++;
+        // expand when at max
+        if (filledElements == list.length) expand();
+        
+        // create new instance using param and add 
+        list[filledElements] = new Element(type, intValue, doubleValue, stringValue);
 
-           return true;
+        // update size
+        filledElements++;
+
+        return true;
      }
-	 
-	 public Element get(int index){
-		 return list[index];
-	 }
+
+    public Element get(int index){
+        return list[index];
+    }
 
 
     /**
@@ -88,12 +100,12 @@ public class List_inArraySlots {
 
        //System.out.println( "old length:" + typeOfElements.length);
 
-          // expand intElements
+        // create new list, copy values over, and replace list
         Element[] bigger = new Element[list.length * 2];
-		for(int index=0;index<list.length; index++){
-			bigger[index] = list[index];
-		}
-		list = bigger;
+        for(int index=0;index<list.length; index++){
+            bigger[index] = list[index];
+        }
+        list = bigger;
 
 
        // System.out.println( "new length:" + typeOfElements.length);
