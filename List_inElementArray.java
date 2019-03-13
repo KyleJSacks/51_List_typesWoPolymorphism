@@ -6,7 +6,9 @@
 
 public class List_inElementArray {
 
-
+    // ================================================================
+    // FIELDS
+    
     private int filledElements; // the number of elements in this list
 
     /* type identifier for each element
@@ -20,6 +22,10 @@ public class List_inElementArray {
 
     private static final int INITIAL_CAPACITY = 10;
 
+    
+    // ================================================================
+    // CONSTRUCTORS
+    
     /**
       Construct an empty list with a small initial capacity.
      */
@@ -42,9 +48,10 @@ public class List_inElementArray {
       */
     public String toString() {
       String stringRep = "[";
+      
       for (int index = 0; index < filledElements; index++){
         stringRep += list[index] + ",";
-	}
+
       stringRep += "]";
       return stringRep;
     }
@@ -61,8 +68,12 @@ public class List_inElementArray {
                        , String stringValue
                        ) {
            // expand when at max
-           if (filledElements == list.length) expand();
+           if (filledElements == list.length) expand();\
+           
+           // create an instance based on param & add it
 		   list[filledElements] = new Element(type, intValue, doubleValue, stringValue);
+           
+           // update size 
 		   filledElements++;
 
            return true;
@@ -86,10 +97,10 @@ public class List_inElementArray {
 
           // expand intElements
         Element[] bigger = new Element[list.length * 2];
-		for(int index=0;index<list.length; index++){
-			bigger[index] = list[index];
-		}
-		list = bigger;
+        for(int index=0;index<list.length; index++){
+            bigger[index] = list[index];
+        }
+        list = bigger;
 
 
        // System.out.println( "new length:" + typeOfElements.length);
