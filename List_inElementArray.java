@@ -4,7 +4,7 @@
   and Strings.
  */
 
-public class List_inArraySlots {
+public class List_inElementArray {
 
 
     private int filledElements; // the number of elements in this list
@@ -67,10 +67,6 @@ public class List_inArraySlots {
 
            return true;
      }
-	 
-	 public Element get(int index){
-		 return list[index];
-	 }
 
 
     /**

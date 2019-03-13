@@ -2,6 +2,7 @@
  Test list features.
  */
 public class UserOfList {
+//<<<<<<< HEAD
     private static List_inArraySlots list;
     
     public static void main( String[] args ) {
@@ -35,4 +36,5 @@ public class UserOfList {
               + list.size() + " elements:");
          System.out.println( list + System.lineSeparator());
     }//test
-}
+}//=======
+
